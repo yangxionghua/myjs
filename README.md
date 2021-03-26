@@ -1,9 +1,9 @@
 # myjs
 # step 1
-##$ git init 
-##$ git status
-##$ git add .
-##$ git status
-##$ git commit -m 'NSS'
-##$ git remote add origin git@github.com:eastmountyxz/NetworkSecuritySelf-study.git
-##$ git push -u origin master
+1.$ git init 
+2.$ git status
+3.$ git add .
+4.$ git status
+5.$ git commit -m 'NSS'
+6.$ git remote add origin git@github.com:eastmountyxz/NetworkSecuritySelf-study.git
+7.$ git push -u origin master
