@@ -1,6 +1,6 @@
 # myjs
-# step 1
-1.$ git init  
+# step 1  
+1.$ git init  初始化，两空格换行
 2.$ git status  
 3.$ git add .  
 4.$ git status  
