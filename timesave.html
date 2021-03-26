@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>节流和防抖</title>
+    <style>
+        html,body{
+            height: 500%;
+        }
+    </style>
+</head>
+<body>
+    <button id = 'db'>clicks</button>
+    <script>
+        //节流：如果要执行10次，只要执行一次，以后就不需要执行。
+        //在规定时间内，只要函数触发第一次生效，以后不生效
+        /**
+         *  fn 被节流函数
+         *  delay 规定时间
+         
+        function throttle(fn,delay){
+            var lastTime = 0;
+            //大于delay时，才去触发事件
+            return function(){
+                var nowTime = Date.now();
+
+                if(nowTime - lastTime > delay){
+                    fn.call(this) //就是执行fn函数
+                    lastTime = nowTime
+                }
+            }
+        }
+        document.onscroll = throttle(function () { console.log('触发函数'+ Date.now()) }, 200)
+        */
+
+        /**
+         *  防抖函数：一个需要频繁触发的函数，在规定时间内，只让最后一次生效，前面不生效
+         *  
+         */
+        function debounce(fn,delay){
+            var timer  = null;
+           /* 每次都要重新设置延时器，过于频繁
+            clearTimeout(timer);
+            timer = setTimeout(function(){
+                fn()
+            },delay);
+ */ 
+            return function(){
+                clearTimeout(timer);
+            timer = setTimeout(function(){
+                fn.apply(this);
+            },delay)
+            }
+        }
+
+        //防抖例子，不让用户频繁点击按钮就触发，给规定时间点击后一秒才触发，多次点击最后一次才触发
+        document.getElementById('db').onclick = debounce(function(){
+            console.log('点击触发了'+ Date.now())
+        },1000)
+
+        
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1. 通信种类 父传子 子传父 隔代 兄弟之间
+        // 方式： 
+        /* 
+        1.props 基本方式 父传子一般属性 子传父函数，缺点隔代较麻烦需要逐层传递
+         2. vue自定义时间：添加事件监听@，再在子组件内emit 发射，缺点：只适合子传父
+         3.消息定义与方式：需要引入库，如pubsub-js，先订阅pubsub.sbuscribe，->在发布pubsub.publish，优点：可以任意关系间通信
+         4.*****vuex：多组件共享状态数据插件库，一般使用这种，更方便*****
+         5.slot：特有专门实现父传子，通信的是数据的标签
+         */
+/* 
+         vuex 状态管理机制，官方提供的插件库
+        vue component
+        |
+        vuex: state, getters, 
+                actions, mutations
+          
+        */
+
+/* 
+MVVC ： ->observe监听data中属性 -> 
+        ->complie编译模板
+                  -> updater 初始化界面 
+                  -> watcher 为表达式创建watcher -> dep 添加到dep中，与data一一对应 
+*/
+
+
+
+    </script>
+</body>
+</html>

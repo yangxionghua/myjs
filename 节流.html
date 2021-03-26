@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>节流</title>
+</head>
+<body>
+    <button id = 'btn'>节流</button>
+    <script>
+        var btn = document.getElementById('btn')
+        function throttle(func,wait){
+            let timer
+            return function(){
+                if(!timer){
+                    timer = setTimeout(function(){
+                        func()
+                        //执行完了记得清空计时器，让下一个执行
+                        timer = null
+                    },wait)
+                }
+            }
+        }
+
+        var fn = function handle(){
+            console.log(Date.now())
+        }
+        btn.addEventListener('click',throttle(fn,1000))
+    </script>
+</body>
+</html>

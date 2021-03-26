@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>方法和原型</title>
+</head>
+<body>
+    <script>
+     /*    function Foo() { 
+            getName = function(){ alert(1) }
+            return this;
+         }
+         Foo.getName = function(){ alert(2) }
+         Foo.prototype.getName = function(){ alert(3) }
+         var getName = function(){alert(4) }
+         function getName (){ alert(5) }
+ */
+         
+         function Foo() { 
+            getName = function(){ alert(1) }
+            return this; //this 是 window
+         }
+         //1.变量提升函数提升, 当两者重名冲突时，会保留函数，变量会被忽略
+         var getName //与函数冲突会被忽略
+         function getName (){ alert(5) } //被重新赋值，也被忽略
+
+         /********/ 
+         Foo.getName = function(){ alert(2) }
+         Foo.prototype.getName = function(){ alert(3) }
+         //getName = function(){alert(4) } //因为变量定义被忽略，这里的getname是对函数重新赋值
+         //在调用了Foo方法后，又被重新定义getname方法，变成了1
+         getName = function(){alert(1) }
+         
+         Foo.getName() //2
+         getName()  //全局找方法
+         Foo().getName() //运算符优先级 点是最高的，但是前提无法调用，就会先执行前面foo里找，getname在里面没被定义，所有又在全局找
+                        // --> (Foo()).getName() --> window.getName() --> 1
+         new Foo.getName() // new (Foo.getName)() -->new (function(){ alert(2) })() --> 2 函数会new实例化生成对象
+         new Foo().getName() //(new Foo()).getName() --> foo.getName() 原型链查找先prototype再obj
+         new new Foo().getName() //new Foo() --> .getName -->new -->()
+                                //new ((new Foo()).getName)()
+
+
+
+
+    </script>
+</body>
+</html>
